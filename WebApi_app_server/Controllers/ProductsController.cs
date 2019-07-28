@@ -13,46 +13,18 @@ namespace WebApi_app_server.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        private SqlConnection ConnectToDB(string host, string user, string password)
+        //SqlConnector conn = new SqlConnector();
+        ISqlConnector conn;
+        public ProductsController(ISqlConnector iConnector)
         {
-            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-            builder.DataSource = "localhost\\SQL";
-            builder.InitialCatalog = "WalletDataBase";
-            builder.UserID = user;
-            builder.Password = password;
-            
-            return new SqlConnection(builder.ConnectionString);
-        }
-
-        private object GetData(string storedProc, Dictionary<string, object> parameters = null)
-        {
-            var conn = ConnectToDB("", "sa", "256532");
-
-            conn.Open();
-            SqlCommand command = new SqlCommand(storedProc, conn);
-            command.CommandType = CommandType.StoredProcedure;
-            if (parameters != null)
-            {
-                foreach (var parameter in parameters)
-                {
-                    command.Parameters.AddWithValue("@" + parameter.Key, parameter.Value);
-                }
-            }
-            command.Parameters.Add("@result", SqlDbType.VarChar, 1000);
-            command.Parameters["@result"].Direction = ParameterDirection.Output;
-            var i = command.ExecuteScalar();
-            List<string> data = new List<String>();
-
-            data.Add(Convert.ToString(command.Parameters["@result"].Value));
-            conn.Close();
-            return data.ToArray();
+            conn = iConnector;
         }
 
         // GET: api/Products
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            object result = GetData("GetProduct");
+            object result = conn.GetData("GetProduct");
             if (result != null)
             {
                 return (IEnumerable<string>)result;
@@ -66,8 +38,8 @@ namespace WebApi_app_server.Controllers
         public IEnumerable<string> Get(int id)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>();
-            parameters["key"] = 1;
-            object result = GetData("GetProduct", parameters);
+            parameters["key"] = id;
+            object result = conn.GetData("GetProduct", parameters);
             return (IEnumerable<string>)result;
         }
 
@@ -77,7 +49,7 @@ namespace WebApi_app_server.Controllers
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("key", value);
-            object result = GetData("InsertProduct", parameters);
+            object result = conn.GetData("InsertProduct", parameters);
             return (string)result;
         }
 
@@ -94,7 +66,7 @@ namespace WebApi_app_server.Controllers
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("key", 0-id);
-            object result = GetData("InsertProduct", parameters);
+            object result = conn.GetData("InsertProduct", parameters);
             return (string)result;
         }
     }
