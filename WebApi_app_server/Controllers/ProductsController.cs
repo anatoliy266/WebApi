@@ -16,48 +16,49 @@ namespace WebApi_app_server.Controllers
         private SqlConnection ConnectToDB(string host, string user, string password)
         {
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-            builder.DataSource = host;
+            builder.DataSource = "localhost\\SQL";
+            builder.InitialCatalog = "WalletDataBase";
             builder.UserID = user;
             builder.Password = password;
-            builder.InitialCatalog = "WalletDataBase";
+            
             return new SqlConnection(builder.ConnectionString);
         }
 
-        private async void GetData(string storedProc, object result, Dictionary<string, object> parameters = null)
+        private object GetData(string storedProc, Dictionary<string, object> parameters = null)
         {
-            var res = await Task.Run(() =>
-            {
-                var conn = ConnectToDB("(localhost\\SQLEXPRESS)", "sa", "123456");
-                conn.Open();
-                SqlCommand command = new SqlCommand(storedProc, conn);
-                command.CommandType = CommandType.StoredProcedure;
-                if (parameters != null)
-                {
-                    foreach (var parameter in parameters)
-                    {
-                        command.Parameters.AddWithValue("@" + parameter.Key, parameter.Value);
-                    }
-                }
-                var reader = command.ExecuteReader();
-                string[] data = new string[100];
+            var conn = ConnectToDB("", "sa", "256532");
 
-                while (reader.Read())
+            conn.Open();
+            SqlCommand command = new SqlCommand(storedProc, conn);
+            command.CommandType = CommandType.StoredProcedure;
+            if (parameters != null)
+            {
+                foreach (var parameter in parameters)
                 {
-                    data.Append(reader["result"]);
+                    command.Parameters.AddWithValue("@" + parameter.Key, parameter.Value);
                 }
-                conn.Close();
-                return data;
-            });
-            result = res;
+            }
+            command.Parameters.Add("@result", SqlDbType.VarChar, 1000);
+            command.Parameters["@result"].Direction = ParameterDirection.Output;
+            var i = command.ExecuteScalar();
+            List<string> data = new List<String>();
+
+            data.Add(Convert.ToString(command.Parameters["@result"].Value));
+            conn.Close();
+            return data.ToArray();
         }
 
         // GET: api/Products
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            object result = null;
-            GetData("GetProduct", result);
-            return (IEnumerable<string>)result;
+            object result = GetData("GetProduct");
+            if (result != null)
+            {
+                return (IEnumerable<string>)result;
+            }
+            else return new string[] { "Nothing" };
+            
         }
 
         // GET: api/Products/5
@@ -66,8 +67,7 @@ namespace WebApi_app_server.Controllers
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters["key"] = 1;
-            object result = null;
-            GetData("GetProduct", result, parameters);
+            object result = GetData("GetProduct", parameters);
             return (IEnumerable<string>)result;
         }
 
@@ -77,8 +77,7 @@ namespace WebApi_app_server.Controllers
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("key", value);
-            object result = null;
-            GetData("InsertProduct", result, parameters);
+            object result = GetData("InsertProduct", parameters);
             return (string)result;
         }
 
@@ -95,8 +94,7 @@ namespace WebApi_app_server.Controllers
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("key", 0-id);
-            object result = null;
-            GetData("InsertProduct", result, parameters);
+            object result = GetData("InsertProduct", parameters);
             return (string)result;
         }
     }

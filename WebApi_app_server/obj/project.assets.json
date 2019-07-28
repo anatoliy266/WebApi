@@ -12577,25 +12577,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\dev\\.nuget\\packages\\": {},
+    "C:\\Users\\admin\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dev\\Source\\Repos\\WebApi_app_server\\WebApi_app_server\\WebApi_app_server.csproj",
+      "projectUniqueName": "C:\\Users\\admin\\source\\repos\\WebApi\\WebApi_app_server\\WebApi_app_server.csproj",
       "projectName": "WebApi_app_server",
-      "projectPath": "C:\\Users\\dev\\Source\\Repos\\WebApi_app_server\\WebApi_app_server\\WebApi_app_server.csproj",
-      "packagesPath": "C:\\Users\\dev\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dev\\Source\\Repos\\WebApi_app_server\\WebApi_app_server\\obj\\",
+      "projectPath": "C:\\Users\\admin\\source\\repos\\WebApi\\WebApi_app_server\\WebApi_app_server.csproj",
+      "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\admin\\source\\repos\\WebApi\\WebApi_app_server\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\dev\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -12604,6 +12604,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Users\\admin\\Downloads": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

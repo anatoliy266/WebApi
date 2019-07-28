@@ -12,3 +12,17 @@ C:\Users\dev\Source\Repos\WebApi_app_server\WebApi_app_server\obj\Debug\netcorea
 C:\Users\dev\Source\Repos\WebApi_app_server\WebApi_app_server\obj\Debug\netcoreapp2.1\WebApi_app_server.RazorTargetAssemblyInfo.cache
 C:\Users\dev\Source\Repos\WebApi_app_server\WebApi_app_server\obj\Debug\netcoreapp2.1\WebApi_app_server.dll
 C:\Users\dev\Source\Repos\WebApi_app_server\WebApi_app_server\obj\Debug\netcoreapp2.1\WebApi_app_server.pdb
+C:\Users\admin\source\repos\WebApi\WebApi_app_server\bin\Debug\netcoreapp2.1\WebApi_app_server.deps.json
+C:\Users\admin\source\repos\WebApi\WebApi_app_server\bin\Debug\netcoreapp2.1\WebApi_app_server.runtimeconfig.json
+C:\Users\admin\source\repos\WebApi\WebApi_app_server\bin\Debug\netcoreapp2.1\WebApi_app_server.runtimeconfig.dev.json
+C:\Users\admin\source\repos\WebApi\WebApi_app_server\bin\Debug\netcoreapp2.1\WebApi_app_server.dll
+C:\Users\admin\source\repos\WebApi\WebApi_app_server\bin\Debug\netcoreapp2.1\WebApi_app_server.pdb
+C:\Users\admin\source\repos\WebApi\WebApi_app_server\obj\Debug\netcoreapp2.1\WebApi_app_server.csprojAssemblyReference.cache
+C:\Users\admin\source\repos\WebApi\WebApi_app_server\obj\Debug\netcoreapp2.1\WebApi_app_server.csproj.CoreCompileInputs.cache
+C:\Users\admin\source\repos\WebApi\WebApi_app_server\obj\Debug\netcoreapp2.1\WebApi_app_server.RazorAssemblyInfo.cache
+C:\Users\admin\source\repos\WebApi\WebApi_app_server\obj\Debug\netcoreapp2.1\WebApi_app_server.RazorAssemblyInfo.cs
+C:\Users\admin\source\repos\WebApi\WebApi_app_server\obj\Debug\netcoreapp2.1\WebApi_app_server.AssemblyInfoInputs.cache
+C:\Users\admin\source\repos\WebApi\WebApi_app_server\obj\Debug\netcoreapp2.1\WebApi_app_server.AssemblyInfo.cs
+C:\Users\admin\source\repos\WebApi\WebApi_app_server\obj\Debug\netcoreapp2.1\WebApi_app_server.RazorTargetAssemblyInfo.cache
+C:\Users\admin\source\repos\WebApi\WebApi_app_server\obj\Debug\netcoreapp2.1\WebApi_app_server.dll
+C:\Users\admin\source\repos\WebApi\WebApi_app_server\obj\Debug\netcoreapp2.1\WebApi_app_server.pdb
